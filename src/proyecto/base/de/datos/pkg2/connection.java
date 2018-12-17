@@ -21,11 +21,15 @@ public class connection {
 
     Connection con = null;
 
+    public connection(String instancia, String database, String puerto, String user, String password) {
+        con = getconexion_sqlserver(instancia, database, puerto, user, password);
+    }
+
     public boolean prueba(String instancia, String bd, String puerto, String usuario, String password) {
         try {
             //cargar nuestro driver
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://"+instancia+"/"+bd, usuario, password);
+            con = DriverManager.getConnection("jdbc:mysql://" + instancia + "/" + bd, usuario, password);
             System.out.println("conexion establecida");
             JOptionPane.showMessageDialog(null, "conexion establecida");
             return true;
@@ -36,7 +40,7 @@ public class connection {
             return false;
         }
     }
-    
+
     public Connection conexion() {
         try {
             //cargar nuestro driver
@@ -45,16 +49,16 @@ public class connection {
             System.out.println("conexion establecida");
             JOptionPane.showMessageDialog(null, "conexion establecida");
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("FUCK");
             JOptionPane.showMessageDialog(null, "error de conexion " + e);
             System.out.println(e);
         }
         return con;
     }
 
-    public void accion(String tabla, String operacion, int id) throws SQLException {
+    public void accion(String instancia, String bd, String puerto, String usuario, String password) throws SQLException {
         //todas las lecturas que vas a hacer solo es de la tabla bitacora
         /*aqui empeiza la lectura de bitacora*/
+        conexion_sqlserver sqlserver = new conexion_sqlserver(instancia, bd, puerto, usuario, password);
         String ret = "";
         int i = 1;
         String campo1 = "", campo2 = "", campo3 = "";//haces un select que lea los campos id_afectado, campo_1, campo_2, campo_3 y tabla_afectada
@@ -64,7 +68,7 @@ public class connection {
         Connection con = conexion();
         int id_bitacora, id_afectado;
         stmt = con.createStatement();
-        String operacion_bitacora, tabla_afectada, campo_1, campo_2, campo_3;
+        String operacion, tabla_afectada, campo_1, campo_2, campo_3;
         resultSet = stmt.executeQuery("SELECT COUNT(*) AS rowcount FROM bitacora");
         resultSet.next();
         int rows = resultSet.getInt("rowcount");
@@ -80,12 +84,19 @@ public class connection {
                 campo_1 = resultSet.getString(5);
                 campo_2 = resultSet.getString(6);
                 campo_3 = resultSet.getString(7);
-                System.out.println(campo_3);
+                sqlserver.ejecutar(operacion, tabla_afectada, id_afectado, campo1, campo2, campo3, bd);
             }
         }
         resultSet.close();
         stmt.close();
-        // termina la lectura de bitacora y empeiza las querys de las otras tablas 
+
+    }
+
+    public void ejecutar(String operacion, String tabla, int id, String campo1, String campo2, String campo3) throws SQLException {
+
+        String query = "";
+        Statement stmt = null;
+        ResultSet resultSet = null;
         if (operacion.equals("insert")) {
             stmt = con.createStatement();
             resultSet = stmt.executeQuery(query);

@@ -1,5 +1,8 @@
 package proyecto.base.de.datos.pkg2;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
@@ -58,16 +61,19 @@ public class Main extends javax.swing.JFrame {
         tablasJF = new javax.swing.JFrame();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         jLabel15 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
 
         jLabel1.setText("Base de datos Origine");
 
@@ -242,89 +248,98 @@ public class Main extends javax.swing.JFrame {
                 .addGap(28, 28, 28))
         );
 
-        jLabel13.setText("Sin Replicar");
+        jLabel13.setText("sql server");
 
-        jLabel14.setText("Replicando");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null}
-            },
-            new String [] {
-                "Title 1"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null}
-            },
-            new String [] {
-                "Title 1"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
+        jLabel14.setText("mysql");
 
         jLabel15.setText("Tablas BD Origen");
 
         jButton5.setText("->");
 
         jButton6.setText("<-");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("Guardar");
 
         jButton8.setText("Cancelar");
+
+        jButton10.setText("Customers");
+
+        jButton11.setText("Employees");
+
+        jButton12.setText("Products");
+
+        jButton13.setText("Customers");
+
+        jButton14.setText("Employees");
+
+        jButton15.setText("Products");
 
         javax.swing.GroupLayout tablasJFLayout = new javax.swing.GroupLayout(tablasJF.getContentPane());
         tablasJF.getContentPane().setLayout(tablasJFLayout);
         tablasJFLayout.setHorizontalGroup(
             tablasJFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tablasJFLayout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(tablasJFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tablasJFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(tablasJFLayout.createSequentialGroup()
                             .addGroup(tablasJFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel13)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(39, 39, 39)
+                                .addComponent(jButton10)
+                                .addComponent(jButton11))
+                            .addGap(32, 32, 32)
                             .addGroup(tablasJFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jButton7))
+                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(17, 17, 17)))
+                    .addComponent(jButton7)
+                    .addComponent(jButton12))
                 .addGap(27, 27, 27)
                 .addGroup(tablasJFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton8)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14))
-                .addGap(35, 35, 35))
+                    .addComponent(jLabel14)
+                    .addComponent(jButton15)
+                    .addComponent(jButton14)
+                    .addComponent(jButton13))
+                .addGap(45, 45, 45))
         );
         tablasJFLayout.setVerticalGroup(
             tablasJFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tablasJFLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel15)
-                .addGap(81, 81, 81)
+                .addGap(74, 74, 74)
                 .addComponent(jButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton6)
-                .addGap(0, 211, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(tablasJFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton6)
+                    .addComponent(jButton11)
+                    .addComponent(jButton14))
+                .addGap(33, 33, 33)
+                .addGroup(tablasJFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton15)
+                    .addComponent(jButton12))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(tablasJFLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(tablasJFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jLabel14))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(tablasJFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGap(35, 35, 35)
+                .addGroup(tablasJFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton10)
+                    .addComponent(jButton13))
+                .addGap(221, 221, 221)
                 .addGroup(tablasJFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton7)
                     .addComponent(jButton8))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -336,13 +351,22 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButton9.setText("Replica de base de datos");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(98, 98, 98)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(133, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -350,7 +374,9 @@ public class Main extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(129, 129, 129)
                 .addComponent(jButton1)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(jButton9)
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         pack();
@@ -368,7 +394,7 @@ public class Main extends javax.swing.JFrame {
         String puerto = puerto_1.getText();
         String usuario = usuario_1.getText();
         String password = pass_1.getText();
-        conexion_sqlserver prueba = new conexion_sqlserver();
+        conexion_sqlserver prueba = new conexion_sqlserver(instancia, bd, puerto, usuario, password);
         boolean funciono = prueba.prueba(instancia, bd, puerto, usuario, password);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -379,8 +405,8 @@ public class Main extends javax.swing.JFrame {
         String puerto = puerto_2.getText();
         String usuario = usuario_2.getText();
         String password = pass_2.getText();
-        connection prueba = new connection();
-        boolean funciono = prueba.prueba(instancia, bd, puerto, usuario, password);        
+        connection prueba = new connection(instancia, bd, puerto, usuario, password);
+        boolean funciono = prueba.prueba(instancia, bd, puerto, usuario, password);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -398,6 +424,20 @@ public class Main extends javax.swing.JFrame {
         tablasJF.pack();
         tablasJF.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        this.tablasJF.pack();
+        this.tablasJF.setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        connection mysql = new connection ("localhost", "northwind", "3306", "root", "");
+        try {
+            mysql.accion("localhost", "northwind", "3306", "root", "");
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -441,6 +481,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField instancia_1;
     private javax.swing.JTextField instancia_2;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -448,6 +494,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -463,10 +510,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField pass_1;
     private javax.swing.JTextField pass_2;
     private javax.swing.JTextField puerto_1;
