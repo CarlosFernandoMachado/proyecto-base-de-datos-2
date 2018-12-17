@@ -64,6 +64,7 @@ public class conexion_sqlserver {
         try {
             contacto = DriverManager.getConnection(url, conexion_sqlserver.usuario, conexion_sqlserver.password);
             status = true;
+            JOptionPane.showMessageDialog(null, "conexion establecida");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error" + e.getMessage(),
                     "Error de conexion_sqlserver", JOptionPane.ERROR_MESSAGE);
