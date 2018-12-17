@@ -23,6 +23,28 @@ public class conexion_sqlserver {
     public static String password;
     public static boolean status = false;
     
+    public boolean prueba(String instancia, String bd, String puerto, String usuario, String password){
+        status = false;
+        String url = "jdbc:sqlserver://"+instancia+":"+puerto+";databaseName="+bd;
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            
+        }catch (ClassNotFoundException e){
+            JOptionPane.showMessageDialog(null, "No se pudo establece la conexion... revisar Driver" + e.getMessage(),
+            "Error de conexion_sqlserver",JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        try{
+            contacto = DriverManager.getConnection(url, usuario, password);
+            status = true;
+            return true;
+        }catch (SQLException e){
+             JOptionPane.showMessageDialog(null, "Error" + e.getMessage(),
+            "Error de conexion_sqlserver",JOptionPane.ERROR_MESSAGE);
+             return false;
+        }
+    }
+    
     public static Connection getconexion_sqlserver(){
         status = false;
         String url = "jdbc:sqlserver://CkriZz666:1433;databaseName=curso";
